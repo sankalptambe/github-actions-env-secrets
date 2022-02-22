@@ -12,28 +12,41 @@ jobs:
   DEV:
     runs-on: ubuntu-latest
     environment: DEV
+    
+    env: 
+      my_secret: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "running a job in dev environment!"
-  UAT:
+        run: |
+          echo "running a job in dev environment!"
+          echo "$my_secret"
+  UAT_ENV:
     runs-on: ubuntu-latest
     environment: UAT
+    env: # Or as an environment variable
+      my_secret: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "running a job in uat environment!"
+        run: |
+          echo "running a job in uat environment!"
+          echo "$my_secret"
         
-  PROD:
+  PROD_ENV:
     runs-on: ubuntu-latest
     environment: PROD
+    env: # Or as an environment variable
+      my_secret: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo "running a job in prod environment!"
+        run: |
+          echo "running a job in prod environment!"
+          echo "$my_secret"
