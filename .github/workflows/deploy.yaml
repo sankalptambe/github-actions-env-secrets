@@ -12,9 +12,9 @@ jobs:
   DEV:
     runs-on: ubuntu-latest
     environment: DEV
+    env: 
+      my_secret: ${{ secrets.MY_SECRET }}
     steps:
-      env: # Or as an environment variable
-        my_secret: ${{ secrets.MY_SECRET }}
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
@@ -25,6 +25,8 @@ jobs:
   UAT_ENV:
     runs-on: ubuntu-latest
     environment: UAT
+    env: # Or as an environment variable
+      my_secret: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v2
 
@@ -37,6 +39,8 @@ jobs:
   PROD_ENV:
     runs-on: ubuntu-latest
     environment: PROD
+    env: # Or as an environment variable
+      my_secret: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v2
 
