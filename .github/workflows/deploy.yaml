@@ -12,6 +12,7 @@ jobs:
   DEV:
     runs-on: ubuntu-latest
     environment: DEV
+    
     env: 
       my_secret: ${{ secrets.MY_SECRET }}
     steps:
