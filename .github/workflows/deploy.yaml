@@ -20,7 +20,8 @@ jobs:
           echo ${{ env.my_secret == 'prod' && 'is prod' || 'not prod' }}
           echo ${{ env.my_secret == 'dev' && 'is dev' || 'not dev' }}
           echo ${{ env.my_secret == 'uat' && 'is uat' || 'not uat' }}
-      - name: testing reusable actions
+      - id: foo
+        name: testing reusable actions
         uses: sankalptambe/reusable-github-workflows@main
         with:
           who-to-greet: 'Mona the Octocat'
