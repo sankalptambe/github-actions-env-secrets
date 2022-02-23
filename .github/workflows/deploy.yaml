@@ -25,5 +25,8 @@ jobs:
       - name: Run a one-line script
         run: |
           echo "running a job in dev environment!"
-          echo "MY SECRET: $my_secret"
+          echo ${{ env.my_secret == 'prod' && 'is prod' || 'not prod }}
+          echo ${{ env.my_secret == 'dev' && 'is dev' || 'not dev }}
+          echo ${{ env.my_secret == 'uat' && 'is uat' || 'not uat }}
+
           
