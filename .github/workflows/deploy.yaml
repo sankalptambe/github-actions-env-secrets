@@ -25,5 +25,5 @@ jobs:
       - name: Run a one-line script
         run: |
           echo "running a job in dev environment!"
-          echo "$my_secret"
+          echo "MY SECRET: $my_secret"
           
