@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  DEV:
+  testing:
     runs-on: ubuntu-latest
     environment: 
       name: dev # ${GITHUB_REF##*/}
@@ -20,5 +20,21 @@ jobs:
           echo ${{ env.my_secret == 'prod' && 'is prod' || 'not prod' }}
           echo ${{ env.my_secret == 'dev' && 'is dev' || 'not dev' }}
           echo ${{ env.my_secret == 'uat' && 'is uat' || 'not uat' }}
+      - id: foo
+        uses: actions/hello-world-composite-action@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
 
-          
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: actions/reusable-github-workflows@v1
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash     
