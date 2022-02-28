@@ -7,7 +7,7 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     environment: 
-      name: dev # ${GITHUB_REF##*/}
+      name: DEV # ${GITHUB_REF##*/}
     
     env: 
       my_secret: ${{ secrets.MY_SECRET }}
@@ -22,8 +22,11 @@ jobs:
           echo ${{ env.my_secret == 'uat' && 'is uat' || 'not uat' }}
       - id: foo
         name: testing reusable actions
-        uses: sankalptambe/reusable-github-workflows@main
+        uses: actions/reusable-github-workflows@main
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash     
+        shell: bash
+        
+  reusable-workflow: 
+    uses: WNS-Malkom/malkom-infra/.github/workflows/reusable-workflow.yaml@dev
