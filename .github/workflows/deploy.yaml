@@ -31,7 +31,7 @@ jobs:
   reusable-workflow: 
     environment:
       name: reuse
-    uses: WNS-Malkom/malkom-infra/.github/workflows/reusable-workflow.yaml@dev
+    uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yaml@main
     secrets:
       MY_CALLER_SECRET: ${{ secrets.MY_SECRET }}
     with:
