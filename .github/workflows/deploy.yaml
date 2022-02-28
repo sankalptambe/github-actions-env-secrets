@@ -29,4 +29,10 @@ jobs:
         shell: bash
         
   reusable-workflow: 
+    environment:
+      name: reuse
     uses: WNS-Malkom/malkom-infra/.github/workflows/reusable-workflow.yaml@dev
+    secrets:
+      MY_CALLER_SECRET: ${{ secrets.MY_SECRET }}
+    with:
+      stage: dev
