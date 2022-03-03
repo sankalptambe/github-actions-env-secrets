@@ -7,6 +7,6 @@ jobs:
   testing:
     uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yml@main
     secrets:
-       my_caller_secret: ${{ secrets.MY_SECRET }}
+       MY_SECRET: ${{ secrets.MY_SECRET }}
     with:
       stage: dev
