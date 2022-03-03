@@ -6,7 +6,7 @@ on:
 jobs:
   testing:
     uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yml@main
-    secrets:
-       MY_SECRET: ${{ secrets.MY_SECRET }}
+    # secrets:
+    #   MY_SECRET: ${{ secrets.MY_SECRET }}
     with:
       stage: dev
