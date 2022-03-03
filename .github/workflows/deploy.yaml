@@ -5,33 +5,7 @@ on:
 
 jobs:
   testing:
-    runs-on: ubuntu-latest
-    environment: 
-      name: DEV # ${GITHUB_REF##*/}
-    
-    env: 
-      my_secret: ${{ secrets.MY_SECRET }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run a one-line script
-        run: |
-          echo "running a job in dev environment!"
-          echo "my branch is: ${GITHUB_REF##*/}"
-          echo ${{ env.my_secret == 'prod' && 'is prod' || 'not prod' }}
-          echo ${{ env.my_secret == 'dev' && 'is dev' || 'not dev' }}
-          echo ${{ env.my_secret == 'uat' && 'is uat' || 'not uat' }}
-      - id: foo
-        name: testing reusable actions
-        uses: actions/reusable-github-workflows@main
-        with:
-          who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
-        
-  reusable-workflow: 
-    environment:
-      name: reuse
-    uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yaml@main
+    uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yml@main
     secrets:
       MY_CALLER_SECRET: ${{ secrets.MY_SECRET }}
     with:
