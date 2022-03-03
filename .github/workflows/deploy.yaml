@@ -5,12 +5,8 @@ on:
 
 jobs:
   testing:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test step 1
-        run: echo Hello World
-      - uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yml@main
-        secrets:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-        with:
-          stage: dev
+    uses: sankalptambe/reusable-github-workflows/.github/workflows/reusable-workflow.yml@main
+    secrets:
+      MY_SECRET: ${{ secrets.MY_SECRET }}
+    with:
+      stage: dev
